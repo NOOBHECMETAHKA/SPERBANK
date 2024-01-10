@@ -18,7 +18,6 @@ class EmployeeIndexController extends Controller
             $employees = $employees->where('login', $data['login']);
 
 
-
         return View('employee.index', compact('employees', 'roles'));
     }
 }

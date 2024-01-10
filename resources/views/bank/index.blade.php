@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-body">
                     <label class="form-label" for="name-bank">Наименование банка</label>
-                    <input id="name-bank" name="name" class="form-control" type="text" placeholder="Наименование банка">
+                    <input id="name-bank" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required type="text" placeholder="Наименование банка">
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

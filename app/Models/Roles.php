@@ -24,7 +24,11 @@ class Roles extends Model
         }
         return $seeder_roles;
     }
-//\Illuminate\Support\Collection
+
+    public static function fireEmployee($user_employee_id){
+        DB::table(Employee::$tableName)->where('user_employee_id', $user_employee_id)->delete();
+    }
+
     public static function getUsersJob( $data){
         $info = [];
         if($data instanceof \Illuminate\Support\Collection){

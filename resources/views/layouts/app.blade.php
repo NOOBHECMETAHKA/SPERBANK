@@ -50,8 +50,23 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+
+                                <a href="" class="nav-link"><img src="{{ asset('svg/score.svg') }}" alt="">  Счёта</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link"><img src="{{ asset('svg/card.svg') }}" alt="">  Карты</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link"><img src="{{ asset('svg/operation.svg') }}" alt="">  Операции</a>
+                            </li>
+                            @can('view', auth()->user())
+                                <li>
+                                    <a href="{{ route('bank.index') }}" class="btn btn-outline-dark">Панель управления</a>
+                                </li>
+                            @endcan
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a id="navbarDropdown" class=" dropdown-toggle btn btn-outline-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->first_name.' '.Auth::user()->middle_name.' '.Auth::user()->last_name }}
                                 </a>
 
@@ -66,9 +81,6 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="{{ route('bank.index') }}" class="btn btn-outline-dark">Панель управления</a>
                             </li>
                         @endguest
                     </ul>

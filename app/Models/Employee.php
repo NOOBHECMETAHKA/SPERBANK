@@ -12,6 +12,15 @@ class Employee extends Model
     protected $guarded = false;
     public static $tableName = 'employees';
 
+    public static function updateRolesEmployee($user_employee_id, $roles){
+        DB::transaction(function () use ($user_employee_id, $roles){
+            DB::table(Employee::$tableName)->where('user_employee_id', $user_employee_id)->delete();
+            foreach($roles as $key => $role){
+                DB::insert("call insert_employee_by_name_role_and_id_user('$role', $user_employee_id);");
+            }
+        });
+    }
+
     /**
      * Возвращает параметры
      * | id

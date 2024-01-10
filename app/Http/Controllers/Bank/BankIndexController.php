@@ -13,7 +13,10 @@ class BankIndexController extends Controller
 {
     public function index(BankIndexRequest $request){
         $data = $request->validated();
+
         $banks = Banks::query();
+
+        
 
         $banks->where('is_deleted', 0);
 

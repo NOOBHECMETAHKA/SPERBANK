@@ -3,12 +3,12 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-center">
-            <form action="" method="post" class="w-75">
+            <form action="{{ route('employee.update', [$user->id]) }}" method="post" class="w-75">
                 @csrf
                 <h2 class="text-center">Редактирование данных сотрудников</h2>
                 <div class="mb-3">
                     <label for="first_name" class="form-label">Фамилия</label>
-                    <input name="first_name"  class="form-control" type="text" id="first_name" value="{{ $user->first_name }}">
+                    <input name="first_name" class="form-control" type="text" id="first_name" value="{{ $user->first_name }}">
                 </div>
                 @error('first_name')
                 <span class="invalid-feedback" role="alert">

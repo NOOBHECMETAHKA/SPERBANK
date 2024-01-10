@@ -18,8 +18,8 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user_id = Auth::user()->getAuthIdentifier();
-        if($user_id == null){
+        $user_id = Auth::user()->getAuthIdentifier() ?? "";
+        if($user_id == ""){
             return redirect()->route('home');
         } else{
             $roles = User::getRoleUserByName($this->protected_role, $user_id);

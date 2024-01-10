@@ -6,12 +6,12 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Добавление ...</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Добавление типа операции</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <label class="form-label" for="name-score-type">Наименование ...</label>
-                        <input id="name-score-type" name="name" class="form-control" type="text" placeholder="Наименование ...">
+                        <label class="form-label" for="name-score-type">Наименование тип операции</label>
+                        <input id="name-score-type" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required type="text" placeholder="Наименование тип операции">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -26,7 +26,7 @@
         </form>
     </div>
     <div class="container">
-        <h1 class="text-center">...</h1>
+        <h1 class="text-center">Типы операции</h1>
         <form method="get" action="{{ route('score.type.index') }}">
             <div class="input-group mb-3 ">
                 <input name="name" class="form-control" placeholder="Поиск по наименованию" id="findButton"
@@ -45,7 +45,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col" colspan="3">Наименование ...</th>
+                    <th scope="col" colspan="3">Наименование</th>
                 </tr>
                 </thead>
                 <tbody>

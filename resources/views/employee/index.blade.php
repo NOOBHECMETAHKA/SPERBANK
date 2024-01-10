@@ -5,12 +5,12 @@
         <h1 class="text-center">Сотрудникики</h1>
         <form method="get" action="{{ route('employee.index') }}" class="mt-3">
             <div class="input-group mb-3 ">
-                <input name="login" class="form-control" placeholder="Поиск по наименованию" id="findButton"
+                <input name="login" class="form-control" placeholder="Поиск по логину" id="findButton"
                        aria-label="" type="text">
                 <button class="btn btn-primary" type="submit">Найти</button>
             </div>
         </form>
-
+        <a href="{{ route('employee.add') }}" class="btn btn-success">Добавить</a>
         <table class="table mt-3">
             <thead>
                 <th class="col">#</th>
@@ -32,10 +32,13 @@
                            @endforeach
                         </td>
                         <td>
-                            <a href="" class="btn btn-warning">Отредактировать</a>
+                            <a href="{{ route('employee.edit', [$employee->id]) }}" class="btn btn-warning">Отредактировать</a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-danger">Уволить</a>
+                            <form action="{{ route('employee.delete', ['id'=>$employee->id]) }}" method="post">
+                                @csrf
+                                <button class="btn btn-danger" type="submit">Уволить</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
