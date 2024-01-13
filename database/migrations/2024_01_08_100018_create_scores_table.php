@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
             $table->string('score_number', 20)->unique();
-            $table->decimal('balance', 10, 2, true);
+            $table->decimal('balance', 10, 2, true)->default(0);
             $table->timestamp('opening_date')->nullable();
 
             $table->bigInteger('score_type_id')->unsigned();

@@ -14,7 +14,7 @@ class Roles extends Model
 
     public static $roles = [
         'admin' => 'Администратор',
-        'accountant' => 'Бугалтер'
+        'accountant' => 'Бухгалтер'
     ];
 
     public static function makeSeedInfo(){

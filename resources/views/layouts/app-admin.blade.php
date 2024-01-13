@@ -54,7 +54,7 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="" class="nav-link">Счёта</a>
+                        <a href="{{ route('score.index') }}" class="nav-link">Счёта</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

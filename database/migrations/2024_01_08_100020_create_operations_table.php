@@ -16,6 +16,8 @@ return new class extends Migration
 
             $table->text('description');
 
+            $table->decimal('accrual_amount', 10, 2, false)->default(0);
+
             $table->bigInteger('operation_type_id')->unsigned();
             $table->foreign('operation_type_id', 'operation_type_fk')
                 ->on('operation_types')->references('id')

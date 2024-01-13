@@ -13,6 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Scripts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 {{--    @vite(['resources/sass/app.scss', 'resources/js/app.js'])--}}
@@ -35,7 +36,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto d-flex flex-row gap-3">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -51,14 +52,13 @@
                             @endif
                         @else
                             <li class="nav-item">
-
-                                <a href="" class="nav-link"><img src="{{ asset('svg/score.svg') }}" alt="">  Счёта</a>
+                                <a href="{{ route('main.configuration').'#__link_score__' }}" class="nav-link"><img src="{{ asset('svg/score.svg') }}" alt="">  Счёта</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link"><img src="{{ asset('svg/card.svg') }}" alt="">  Карты</a>
+                                <a href="{{ route('main.configuration').'#__link_cards__' }}" class="nav-link"><img src="{{ asset('svg/card.svg') }}" alt="">  Карты</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link"><img src="{{ asset('svg/operation.svg') }}" alt="">  Операции</a>
+                                <a href="{{ route('main.configuration').'#__link_operation__' }}" class="nav-link"><img src="{{ asset('svg/operation.svg') }}" alt="">  Операции</a>
                             </li>
                             @can('view', auth()->user())
                                 <li>
@@ -71,6 +71,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('main.profile') }}">
+                                        Профиль
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('main.password.edit') }}">
+                                        Сменть пароль
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

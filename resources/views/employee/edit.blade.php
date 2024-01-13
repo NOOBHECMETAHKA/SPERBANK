@@ -29,9 +29,7 @@
                     <input name="last_name"  class="form-control" type="text" id="last_name" value="{{ $user->last_name }}">
                 </div>
                 @error('last_name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                <strong class="text-danger">{{ $message }}</strong>
                 @enderror
                 <div class="mb-3">
                     <label for="phone_format_redactor" class="form-label">Номер телефона</label>
