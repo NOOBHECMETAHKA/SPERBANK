@@ -60,8 +60,12 @@ class RedisLogging {
         $data = [
             self::DATA_TIMING_REDIS  => date("Y-m-d H:i:s"),
             self::DATA_USER_LINK_REDIS => $user_id,
-            self::DATA_MESSAGE_REDIS => "Произошло ".mb_strtolower($reaction)." на "."вкладке ".mb_strtolower($table),
-            self::REDIS_VARIABLE_LOG_SCORE => 'Номер счёта: '.$score->score_number.'; Баланс: '.$score->balance.';',
+            self::DATA_MESSAGE_REDIS => "Произошло ".mb_strtolower(
+                    self::VOCABULARY_TO_CHANGE[$reaction]
+                )." на "."вкладке ".mb_strtolower(
+                    self::VOCABULARY_TO_OBJECTS[$table]),
+            self::REDIS_VARIABLE_LOG_SCORE => 'Номер счёта: '.$score->score_number.'; Баланс: '.$score->balance.';'
+            .User::getFormatString(User::all()->where('id', $score->user_score_id)->first()),
         ];
 
         $json = json_encode($data, JSON_UNESCAPED_UNICODE);

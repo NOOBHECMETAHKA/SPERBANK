@@ -4,6 +4,8 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
+
 class AdminPolicy
 {
     /**
@@ -19,7 +21,7 @@ class AdminPolicy
      */
     public function view(User $user, User $model) : bool
     {
-        $user_id = $model->id ?? "";
+        $user_id = $user->id ?? "";
         if($user_id == ""){
             return false;
         } else{

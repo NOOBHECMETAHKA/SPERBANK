@@ -62,4 +62,5 @@ class Card extends Model
         ];
         DB::table(Card::$tableName)->insert($data);
     }
+
 }

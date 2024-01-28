@@ -29,39 +29,36 @@
             </button>
 
             <div class="collapse navbar-collapse pt-1" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-{{--                <ul class="navbar-nav me-auto">--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a href="" class="nav-link">Главная страница</a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="{{ route('bank.index') }}" class="nav-link">Банк</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="{{ route('card.type.index') }}" class="nav-link">Типы счётов</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="{{ route('score.type.index') }}" class="nav-link">Типы операций</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="{{ route('score.index') }}" class="nav-link">Счёта</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="{{ route('employee.index') }}" class="nav-link">Сотрудники</a>
-                    </li>
-                </ul>
+                @if(\App\Models\User::getRoleUserPermission('accountant', \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier()))
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('bank.index') }}" class="nav-link">Банк</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('card.type.index') }}" class="nav-link">Типы счётов</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('score.type.index') }}" class="nav-link">Типы операций</a>
+                        </li>
+                    </ul>
+                @endif
+                @if(\App\Models\User::getRoleUserPermission('admin', \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier()))
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('score.index') }}" class="nav-link">Счёта</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('employee.index') }}" class="nav-link">Сотрудники</a>
+                        </li>
+                    </ul>
+                @endif
             </div>
         </div>
     </nav>

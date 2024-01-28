@@ -42,4 +42,8 @@ class Score extends Model
         ];
         DB::table(Score::$tableName)->insert($data);
     }
+
+    public static function getDataToUpdateScoreBalance($card_id){
+        return collect(DB::select("call get_data_to_update_score_balance($card_id)"));
+    }
 }

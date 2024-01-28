@@ -60,11 +60,16 @@
                             <li class="nav-item">
                                 <a href="{{ route('main.configuration').'#__link_operation__' }}" class="nav-link"><img src="{{ asset('svg/operation.svg') }}" alt="">  Операции</a>
                             </li>
-                            @can('view', auth()->user())
+                            @if(\App\Models\User::getRoleUserPermission('accountant', \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier()))
                                 <li>
-                                    <a href="{{ route('bank.index') }}" class="btn btn-outline-dark">Панель управления</a>
+                                    <a href="{{ route('bank.index') }}" class="btn btn-outline-dark">Панель бугалтерии</a>
                                 </li>
-                            @endcan
+                            @endif
+                            @if(\App\Models\User::getRoleUserPermission('admin', \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier()))
+                                <li>
+                                    <a href="{{ route('score.index') }}" class="btn btn-outline-dark">Панель администратора</a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class=" dropdown-toggle btn btn-outline-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->first_name.' '.Auth::user()->middle_name.' '.Auth::user()->last_name }}

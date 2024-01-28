@@ -52,6 +52,10 @@ class User extends Authenticatable
         return collect(DB::select("call get_role_user_by_name('$role', $user_id);"));
     }
 
+    public static function getRoleUserPermission($role, $user_id){
+        return count(collect(DB::select("call get_role_user_by_name('$role', $user_id);"))) > 0;
+    }
+
     public static function getFormatString($user){
         return $user->login.' ('.$user->first_name.' '.$user->middle_name.' '.$user->last_name.')';
     }

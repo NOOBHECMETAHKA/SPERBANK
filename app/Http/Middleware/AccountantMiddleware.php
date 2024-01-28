@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class AccountantMiddleware
 {
-    private $protected_role = 'admin';
+    private $protected_role = 'accountant';
 
     public function handle(Request $request, Closure $next): Response
     {
